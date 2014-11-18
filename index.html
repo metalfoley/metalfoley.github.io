@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="author" href="humans.txt" />
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/foundation.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+
+                <!-- NAVIGATION -->
+                <nav class="top-bar clearfix" data-topbar role="navigation">
+                    <ul class="title-area">
+                        <li class="name">
+                            <h1><a href="#">Who's Poster?</a></h1>
+                        </li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                    </ul>
+                    <section class="top-bar-section clearfix">
+                        <!-- Social Media Section -->
+                        <ul class="right social">
+                          <li><a href="www.linkedin.com/in/stevenbyington/" class="show-for-medium-up" id="linkedin"></a></li>
+                          <li><a href="www.linkedin.com/in/stevenbyington/" class="hide-for-medium-up"><span>LinkedIn</span></a></li>
+                          <li><a href="https://twitter.com/srbyington"  class="show-for-medium-up" id="twitter"><span class="hide-for-medium-up">Twitter</span></a></li>
+                          <li><a href="https://twitter.com/srbyington" class="hide-for-medium-up"><span>Twitter</span></a></li>
+                          <li><a href="https://github.com/metalfoley"  class="show-for-medium-up" id="github"><span class="hide-for-medium-up">Github</span></a></li>
+                          <li><a href="https://github.com/metalfoley" class="hide-for-medium-up"><span>Github</span></a></li>
+                        </ul>
+                    </section>
+                </nav>
+                <!-- END NAVIGATION -->
+
+                <!-- GAME AREA -->
+                <div class="gamewrapper clearfix">
+                    <div class="posterframe">
+                        <img src="img/posterframe.svg" alt="poster frame" />
+                        <img id="posterImg" />
+                        <div>
+                            <a id="next-button" href="#">NEXT</a>
+                        </div>
+                    </div>
+
+                    <section>
+                        <div class="answers">
+                            <hr class="">
+                            <p><span>A</span></p>
+                            <hr>
+                            <p><span>B</span></p>
+                            <hr>
+                            <p><span>C</span></p>
+                            <hr>
+                            <p><span>D</span></p>
+                            <hr>
+                        </div>
+
+                        <div class="score">
+                            <p>Score:</p>
+                            <p class="add"><span>0</span>/10<p>
+                        </div>
+
+                    </section>
+
+                </div>
+                <!-- END GAME AREA -->
+
+                <!-- FEEDBACK MODEL -->
+                <div id="feedback-model" class="reveal-modal" data-reveal>
+                    <form>
+                        <div class="row">
+                            <div class="small-8 columns">
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label for="right-label" class="right inline">Name: </label>
+                                    </div>
+                                    <div class="small-9 columns">
+                                        <input type="text" id="right-label" placeholder="What is your name?">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-8 columns">
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label for="right-label" class="right inline">Email: </label>
+                                    </div>
+                                    <div class="small-9 columns">
+                                        <input type="text" id="right-label" placeholder="What is your Email?">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-8 columns">
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label class="right-inline">Rating: </label>
+                                    </div>
+                                    <div class="small-9 columns">
+                                        <input type="radio" name="vehicle" value="1" id="exp1"><label for="exp1">1</label>
+                                        <input type="radio" name="vehicle" value="2" id="exp2"><label for="exp2">2</label>
+                                        <input type="radio" name="vehicle" value="3" id="exp3"><label for="exp3">3</label>
+                                        <input type="radio" name="vehicle" value="4" id="exp4"><label for="exp4">4</label>
+                                        <input type="radio" name="vehicle" value="5" id="exp5"><label for="exp5">5</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-8 columns">
+                                <div class="row">
+                                    <div class="small-3 columns">
+                                        <label for="message" class="right-inline">Message: </label>
+                                    </div>
+                                    <div class="small-9 columns">
+                                        <textarea id="message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="submit right" type="submit">Submit</button>
+                    </form>
+                    <a class="close-reveal-modal">&#215;</a>
+
+                </div>
+            <!-- END FEEDBACK MODEL -->
+            <div class="push"></div>
+        </div>
+
+            <!-- FOOTER -->
+            <footer id="footer" class="footer clearfix">
+                <ul class="right">
+                    <li><a href="#" data-reveal-id="feedback-model">GOT FEEDBACK?</a></li>
+               </ul>
+                <a href="humans.txt" target="_new"><img src="img/humanstxt.png" /></a>
+            </footer>
+
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+        <script src="js/vendor/jquery-1.11.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/vendor/foundation.min.js"></script>
+        <script>$(document).foundation();</script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+       <!--  <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script> -->
+    </body>
+</html>

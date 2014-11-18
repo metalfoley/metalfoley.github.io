@@ -1,0 +1,32 @@
+var poster = {
+        "toyStory"   : {
+            "censored"     : "toystory",
+            "uncensored"   : "toystory",
+            "answers"      :  {
+                "one"     : "Winter's Bone",
+                "two"     : "Oculus",
+                "three"   : "Fargo",
+                "correct" : "Toy Story"
+            }
+        },
+        "wintersBone" : {
+            "censored"     : "wintersBone",
+            "uncensored"   : "wintersBone",
+            "answers"      :  {
+                "one"     : "Oculus",
+                "two"     : "Fargo",
+                "three"   : "Toy Story",
+                "correct" : "Winter's Bone"
+            }
+        },
+        "oculus" : {
+            "censored"     : "oculus",
+            "uncensored"   : "oculus",
+            "answers"      :  {
+                "one"     : "Winter's Bone",
+                "two"     : "Toy Story",
+                "three"   : "Fargo",
+                "correct" : "Oculus"
+            }
+        }
+    }
