@@ -1,9 +1,9 @@
-jQuery(document).ready(function ($) {
+$(document).ready(function() {
 "use strict";
 
     //POSTERS//
 
-    function poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, answers) {
+    function Poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, answers) {
         this.censored = censored;
         this.uncensored = uncensored;
         this.answerOne = answerOne;
@@ -13,17 +13,16 @@ jQuery(document).ready(function ($) {
         this.answers = [answerOne, answerTwo, answerThree, correctAnswer];
         this.randomAnswers = shuffle(this.answers);
     }
-    var posterOne = new poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Girl");
-    var posterTwo = new poster("oculus_c", "oculus_u","Sinister", "Insidious", "The Conjuring", "Oculus");
-    var posterThree = new poster("drive_c", "drive_u", "Rush", "Bronson", "Blue Valentine", "Drive");
-    var posterFour = new poster("zodiac_c","zodiac_u", "The Game", "Panic Room", "Source Code", "Zodiac");
-    var posterFive = new poster("silverliningsplaybook_c","silverliningsplaybook_u", "Friends With Benefits", "Crazy Stupid Love", "American Hustle", "Silver Linings Playbook");
-    var posterSix = new poster("darkknight_c","darkknight_u", "Inception", "The Prestige", "Batman Begins", "The Dark Knight");
-    var posterSeven = new poster("fightclub_c","fightclub_u", "Pulp Fiction", "Seven", "Snatch", "Fight Club");
+    var posterOne = new Poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Girl");
+    var posterTwo = new Poster("oculus_c", "oculus_u","Sinister", "Insidious", "The Conjuring", "Oculus");
+    var posterThree = new Poster("drive_c", "drive_u", "Rush", "Bronson", "Blue Valentine", "Drive");
+    var posterFour = new Poster("zodiac_c","zodiac_u", "The Game", "Panic Room", "Source Code", "Zodiac");
+    var posterFive = new Poster("silverliningsplaybook_c","silverliningsplaybook_u", "Friends With Benefits", "Crazy Stupid Love", "American Hustle", "Silver Linings Playbook");
+    var posterSix = new Poster("darkknight_c","darkknight_u", "Inception", "The Prestige", "Batman Begins", "The Dark Knight");
+    var posterSeven = new Poster("fightclub_c","fightclub_u", "Pulp Fiction", "Seven", "Snatch", "Fight Club");
 
 ////////////////VARIABLES/////////////////
     var $next = $("#next-button");
-    var $answers = $(".answers");
     var randomImage;
     var $img = $("#posterImg");
 
@@ -110,7 +109,4 @@ jQuery(document).ready(function ($) {
 
 });
 
-$('#humansTxt').foundation('reveal', 'open', 'humans.txt');
-
-
-// Score doesnt work after first time
+// $('#humansTxt').foundation('reveal', 'open', 'humans.txt');
