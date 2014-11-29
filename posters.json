@@ -1,32 +1,64 @@
-var poster = {
-        "toyStory"   : {
-            "censored"     : "toystory",
-            "uncensored"   : "toystory",
-            "answers"      :  {
-                "one"     : "Winter's Bone",
-                "two"     : "Oculus",
-                "three"   : "Fargo",
-                "correct" : "Toy Story"
+{
+    "posters": [
+        {
+            "censored": "zodiac_c",
+            "uncensored": "zodiac_u",
+            "answers": {
+                "one": "The Game",
+                "two": "Panic Room",
+                "three": "Source Code",
+                "correct": "Zodiac"
             }
         },
-        "wintersBone" : {
-            "censored"     : "wintersBone",
-            "uncensored"   : "wintersBone",
-            "answers"      :  {
-                "one"     : "Oculus",
-                "two"     : "Fargo",
-                "three"   : "Toy Story",
-                "correct" : "Winter's Bone"
+        {
+            "censored": "drive_c",
+            "uncensored": "drive_u",
+            "answers": {
+                "one": "Rush",
+                "two": "Bronson",
+                "three": "Blue Valentine",
+                "correct": "Drive"
             }
         },
-        "oculus" : {
-            "censored"     : "oculus",
-            "uncensored"   : "oculus",
-            "answers"      :  {
-                "one"     : "Winter's Bone",
-                "two"     : "Toy Story",
-                "three"   : "Fargo",
-                "correct" : "Oculus"
+        {
+            "censored": "oculus_c",
+            "uncensored": "oculus_u",
+            "answers": {
+                "one": "Sinister",
+                "two": "Insidious",
+                "three": "The Conjuring",
+                "correct": "Oculus"
             }
-        }
-    }
+        },
+        {
+            "censored": "gonebabygone_c",
+            "uncensored": "gonebabygone_u",
+            "answers": {
+                "one": "Mystic River",
+                "two": "Eastern Promises",
+                "three": "The Town",
+                "correct": "Gone Baby Gone"
+            }
+        },
+        {
+            "censored": "oculus",
+            "uncensored": "oculus",
+            "answers": {
+                "one": "Winter's Bone",
+                "two": "Toy Story",
+                "three": "Fargo",
+                "correct": "Oculus"
+            }
+        },
+        {
+            "censored": "oculus",
+            "uncensored": "oculus",
+            "answers": {
+                "one": "Winter's Bone",
+                "two": "Toy Story",
+                "three": "Fargo",
+                "correct": "Oculus"
+            }
+        },
+    ]
+}

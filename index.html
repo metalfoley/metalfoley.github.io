@@ -49,11 +49,14 @@
                         <div>
                             <a id="next-button" href="#">NEXT</a>
                         </div>
+                        <!-- <div>
+                            <a id="play-again" href="#">Play Again?</a>
+                        </div> -->
                     </div>
 
                     <section>
                         <div class="answers">
-                            <hr class="">
+                            <hr>
                             <p><span>A</span></p>
                             <hr>
                             <p><span>B</span></p>
@@ -64,15 +67,26 @@
                             <hr>
                         </div>
 
-                        <div class="score">
+                        <!-- <div class="score">
                             <p>Score:</p>
                             <p class="add"><span>0</span>/10<p>
-                        </div>
+                        </div> -->
 
                     </section>
 
                 </div>
                 <!-- END GAME AREA -->
+
+                <div id="endinfo">
+                    <div id="play-again">
+                        <a href="#">Play Again?</a>
+                    </div>
+
+                    <div class="score">
+                        <p>Score:</p>
+                        <p class="add"><span>0</span>/10</p>
+                    </div>
+                </div>
 
                 <!-- FEEDBACK MODEL -->
                 <div id="feedback-model" class="reveal-modal" data-reveal>
@@ -97,22 +111,6 @@
                                     </div>
                                     <div class="small-9 columns">
                                         <input type="text" id="right-label" placeholder="What is your Email?">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="small-8 columns">
-                                <div class="row">
-                                    <div class="small-3 columns">
-                                        <label class="right-inline">Rating: </label>
-                                    </div>
-                                    <div class="small-9 columns">
-                                        <input type="radio" name="vehicle" value="1" id="exp1"><label for="exp1">1</label>
-                                        <input type="radio" name="vehicle" value="2" id="exp2"><label for="exp2">2</label>
-                                        <input type="radio" name="vehicle" value="3" id="exp3"><label for="exp3">3</label>
-                                        <input type="radio" name="vehicle" value="4" id="exp4"><label for="exp4">4</label>
-                                        <input type="radio" name="vehicle" value="5" id="exp5"><label for="exp5">5</label>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +147,7 @@
         <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
         <script src="js/vendor/jquery-1.11.1.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-
+        <script src="js/vendor/velocity.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/vendor/foundation.min.js"></script>
         <script>$(document).foundation();</script>

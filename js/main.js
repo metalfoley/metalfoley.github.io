@@ -13,26 +13,34 @@ $(document).ready(function() {
         this.answers = [answerOne, answerTwo, answerThree, correctAnswer];
         this.randomAnswers = shuffle(this.answers);
     }
-    var posterOne = new Poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Girl");
+    var posterOne = new Poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Gone");
     var posterTwo = new Poster("oculus_c", "oculus_u","Sinister", "Insidious", "The Conjuring", "Oculus");
     var posterThree = new Poster("drive_c", "drive_u", "Rush", "Bronson", "Blue Valentine", "Drive");
     var posterFour = new Poster("zodiac_c","zodiac_u", "The Game", "Panic Room", "Source Code", "Zodiac");
     var posterFive = new Poster("silverliningsplaybook_c","silverliningsplaybook_u", "Friends With Benefits", "Crazy Stupid Love", "American Hustle", "Silver Linings Playbook");
     var posterSix = new Poster("darkknight_c","darkknight_u", "Inception", "The Prestige", "Batman Begins", "The Dark Knight");
     var posterSeven = new Poster("fightclub_c","fightclub_u", "Pulp Fiction", "Seven", "Snatch", "Fight Club");
+    var posterEight = new Poster("elephantman_c","elephantman_u", "Eraserhead", "The Deer Hunter", "Blue Velvet", "The Elephant Man");
+    var posterNine = new Poster("dune_c","dune_u", "Stargate", "The Fifth Element", "Contact", "Dune");
+    var posterTen = new Poster("yougotmail_c","yougotmail_u", "Sleepless in Seattle", "Pretty Woman", "Runaway Bride", "You've Got Mail");
+
 
 ////////////////VARIABLES/////////////////
     var $next = $("#next-button");
+    var $playAgain = $("#play-again");
     var randomImage;
     var $img = $("#posterImg");
+    var $gameWrapper = $(".gamewrapper");
 
     //Keep Score starting with zero.
-    var score;
-    score= 0;
+    var score = 0;
+    // score= 0;
 
     //Empty and Used Arrays
-    var unusedImages = [posterOne, posterTwo, posterThree, posterFour, posterFive, posterSix, posterSeven];
+    var unusedImages = [posterOne, posterTwo, posterThree, posterFour, posterFive, posterSix, posterSeven, posterEight, posterNine, posterTen];
     var usedImages = [];
+
+    $next.hide();
 
     function createAnswers() {
         var i, $update, answerText;
@@ -44,6 +52,10 @@ $(document).ready(function() {
             if (usedImages.length === 0) {
                 $update.appendChild(answerText);
             }
+            // else if($.contains($update, $update.childNodes[2])) {
+            //     $update[i].childNodes[2].nodeValue = "";
+            //     $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
+            // }
             else {
                 $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
             }
@@ -52,7 +64,8 @@ $(document).ready(function() {
 
 
     function nextImage() {
-        $next.hide();
+        $next.velocity("fadeOut", { duration: 250 });
+        $playAgain.hide();
         $(".answers p > span").removeClass();
 
         //Find Random Image Src from unusedImages Array
@@ -69,8 +82,12 @@ $(document).ready(function() {
             createAnswers();
             usedImages.push(randomImage);
         }
-        else if (usedImages.length === unusedImages.length) {
-            document.getElementById("next-button").textContent = "Play Again?";
+        //End of game.
+        else if (usedImages.length == 10) {
+            $gameWrapper.velocity("fadeOut", { duration: 500 });
+            $next.velocity("fadeOut", { duration: 500 });
+            $playAgain.velocity("fadeIn", { duration: 500 });
+            // for (var i=0; i<4; i++) { $(".answers p")[i].childNodes[1].nodeValue = ""; }
         }
         //Image has been used, so find another random image
         else {
@@ -85,13 +102,13 @@ $(document).ready(function() {
         var $guess = $(this).text().substring(1);
         if ($guess == randomImage.correctAnswer) {
             $answerColor.addClass("correct");
-            score += 1;
+            score++;
             $('.add span').text(score);
         }
         else {
             $answerColor.addClass("wrong");
         }
-        $next.show();
+        $next.velocity("fadeIn", { duration: 250 });
         $img.attr("src", "img/" + randomImage.uncensored + ".png").attr("alt", randomImage.correctAnswer);
         return score;
     }
@@ -106,6 +123,18 @@ $(document).ready(function() {
     $(".answers p").on('click', checkIfCorrect);
     //Go to Next Image
     $next.on('click', nextImage);
+    //Restart Game
+    // $playAgain.on('click', function() {
+    //     usedImages = [];
+    //     $playAgain.velocity("fadeOut", { duration: 500 });
+    //     $gameWrapper.velocity("fadeIn", { duration: 500 });
+    //     score = 0;
+    //     $('.add span').text(0);
+    //     nextImage();
+    // });
+    $playAgain.on('click', function() {
+        window.location.reload();
+    });
 
 });
 
