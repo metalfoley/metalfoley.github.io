@@ -41,24 +41,74 @@
             }
         },
         {
-            "censored": "oculus",
-            "uncensored": "oculus",
+            "censored": "silverliningsplaybook_c",
+            "uncensored": "silverliningsplaybook_u",
             "answers": {
-                "one": "Winter's Bone",
-                "two": "Toy Story",
-                "three": "Fargo",
-                "correct": "Oculus"
+                "one": "Friends With Benefits",
+                "two": "Crazy Stupid Love",
+                "three": "American Hustle",
+                "correct": "Silver Linings Playbook"
             }
         },
         {
-            "censored": "oculus",
-            "uncensored": "oculus",
+            "censored": "darkknight_c",
+            "uncensored": "darkknight_u",
             "answers": {
-                "one": "Winter's Bone",
-                "two": "Toy Story",
-                "three": "Fargo",
-                "correct": "Oculus"
+                "one": "Inception",
+                "two": "The Prestige",
+                "three": "Batman Begins",
+                "correct": "The Dark Knight"
             }
         },
+        {
+            "censored": "darkknight_c",
+            "uncensored": "darkknight_u",
+            "answers": {
+                "one": "Inception",
+                "two": "The Prestige",
+                "three": "Batman Begins",
+                "correct": "The Dark Knight"
+            }
+        },
+        {
+            "censored": "fightclub_c",
+            "uncensored": "fightclub_u",
+            "answers": {
+                "one": "Pulp Fiction",
+                "two": "Seven",
+                "three": "Snatch",
+                "correct": "Fight Club"
+            }
+        },
+        {
+            "censored": "elephantman_c",
+            "uncensored": "elephantman_u",
+            "answers": {
+                "one": "Eraserhead",
+                "two": "The Deer Hunter",
+                "three": "Blue Velvet",
+                "correct": "The Elephant Man"
+            }
+        },
+        {
+            "censored": "dune_c",
+            "uncensored": "dune_u",
+            "answers": {
+                "one": "Stargate",
+                "two": "The Fifth Element",
+                "three": "Contact",
+                "correct": "Dune"
+            }
+        },
+        {
+            "censored": "yougotmail_c",
+            "uncensored": "yougotmail_u",
+            "answers": {
+                "one": "Sleepless in Seattle",
+                "two": "Pretty Woman",
+                "three": "Runaway Bride",
+                "correct": "You've Got Mail"
+            }
+        }
     ]
 }
