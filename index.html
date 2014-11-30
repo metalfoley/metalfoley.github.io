@@ -41,17 +41,27 @@
                 </nav>
                 <!-- END NAVIGATION -->
 
+                <!-- END GAME AREA -->
+
+
+
                 <!-- GAME AREA -->
                 <div class="gamewrapper clearfix">
+                <div id="endinfo">
+                    <div id="play-again">
+                        <a href="#">Play Again?</a>
+                    </div>
+
+                    <div class="score">
+                        <p class="add">Score: <span>0</span>/10</p>
+                    </div>
+                </div>
                     <div class="posterframe">
                         <img src="img/posterframe.svg" alt="poster frame" />
                         <img id="posterImg" />
                         <div>
                             <a id="next-button" href="#">NEXT</a>
                         </div>
-                        <!-- <div>
-                            <a id="play-again" href="#">Play Again?</a>
-                        </div> -->
                     </div>
 
                     <section>
@@ -67,26 +77,18 @@
                             <hr>
                         </div>
 
-                        <!-- <div class="score">
-                            <p>Score:</p>
-                            <p class="add"><span>0</span>/10<p>
-                        </div> -->
+                        <select class="answers-mobile">
+                            <option value="Please Select Your Answer" selected="selected" disabled="disabled">Please Select Your Answer</option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
 
                     </section>
 
                 </div>
-                <!-- END GAME AREA -->
 
-                <div id="endinfo">
-                    <div id="play-again">
-                        <a href="#">Play Again?</a>
-                    </div>
-
-                    <div class="score">
-                        <p>Score:</p>
-                        <p class="add"><span>0</span>/10</p>
-                    </div>
-                </div>
 
                 <!-- FEEDBACK MODEL -->
                 <div id="feedback-model" class="reveal-modal" data-reveal>

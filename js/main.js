@@ -43,21 +43,29 @@ $(document).ready(function() {
     $next.hide();
 
     function createAnswers() {
-        var i, $update, answerText;
+        var i, $update, $options, answerText;
         for (i = 0; i < 4; i++) {
             $update = $(".answers p")[i];
+            $options = $(".answers-mobile option")[i+1];
             answerText = document.createTextNode(randomImage.randomAnswers[i]);
 
-            //Set answers and then update nodes afterwards
+            //Set initial answers
             if (usedImages.length === 0) {
-                $update.appendChild(answerText);
+                if($(".answers-mobile").css("display") != "block") {
+                    $update.appendChild(answerText);
+                }
+                else {
+                    $options.appendChild(answerText);
+                }
             }
-            // else if($.contains($update, $update.childNodes[2])) {
-            //     $update[i].childNodes[2].nodeValue = "";
-            //     $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
-            // }
+            //Update answers
             else {
-                $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
+                if($(".answers-mobile").css("display") != "block") {
+                    $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
+                }
+                else {
+                    $options.childNodes[0].nodeValue = randomImage.randomAnswers[i];
+                }
             }
         }
     }
@@ -100,7 +108,8 @@ $(document).ready(function() {
     function checkIfCorrect() {
         var $answerColor = $(this).children();
         var $guess = $(this).text().substring(1);
-        if ($guess == randomImage.correctAnswer) {
+        var $guessMobile = $(".answers-mobile option:selected").text();
+        if ($guess == randomImage.correctAnswer || $guessMobile == randomImage.correctAnswer) {
             $answerColor.addClass("correct");
             score++;
             $('.add span').text(score);
@@ -121,17 +130,11 @@ $(document).ready(function() {
 
     //Check if answer is correct
     $(".answers p").on('click', checkIfCorrect);
+    //Check if correct for mobile
+    $(".container").on('change', '.answers-mobile', checkIfCorrect);
     //Go to Next Image
     $next.on('click', nextImage);
     //Restart Game
-    // $playAgain.on('click', function() {
-    //     usedImages = [];
-    //     $playAgain.velocity("fadeOut", { duration: 500 });
-    //     $gameWrapper.velocity("fadeIn", { duration: 500 });
-    //     score = 0;
-    //     $('.add span').text(0);
-    //     nextImage();
-    // });
     $playAgain.on('click', function() {
         window.location.reload();
     });
