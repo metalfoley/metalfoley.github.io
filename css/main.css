@@ -8,6 +8,10 @@
     height: 100%;
  }
 
+ body {
+    width: 100%;
+ }
+
 .container {
     background: url('../img/bgtexture.png');
     background-color: #ffdc71;
@@ -60,9 +64,12 @@ p {
 .top-bar, .top-bar.expanded .title-area{
     background: #7a0005;
 }
-
+.top-bar-section ul {
+    margin-left: .5rem;
+}
 .top-bar-section ul li {
     background: #6a0005;
+    margin-left: .5rem;
 }
 
 .top-bar-section ul li:hover {
@@ -137,7 +144,7 @@ p {
 }
 
 .posterframe {
-    /*width: 42%;*/
+    width: 42%;
     float: left;
     margin: 2.75rem 4rem 7rem 2.75rem;
     position: relative;
@@ -170,7 +177,7 @@ p {
     background-color: transparent;
     border: .5rem solid #7a0005;
     text-align: center;
-    padding: 0 5.3rem;
+    padding: 0 4.5rem;
     color: #7a0005;
     font-family: 'limelight', serif;
     font-size: 2rem;
@@ -187,7 +194,8 @@ p {
 
 #play-again {
     margin: 5rem auto 1rem;
-    width: 22.1875rem;
+    text-align: center;
+    /*width: 22.1875rem;*/
 }
 
 .answers{
@@ -239,6 +247,7 @@ p {
     word-wrap: break-word;
     text-align: center;
     margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
 .score p{
@@ -256,6 +265,20 @@ hr {
 .answers-mobile{
     display: none;
 }
+#endinfo {
+    width: 100%;
+    max-width: 1200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#end-text {
+    text-align: center;
+    font-size: 2rem;
+    color: #7a0005;
+}
+
 /*************************************
            FOOTER
 *************************************/
@@ -280,7 +303,6 @@ hr {
 .footer p {
     color: #fff;
 }
-
 .footer a[href^="humans"] img {
     padding-top: 0.4375rem;
     margin-left: 1.9375rem;
@@ -364,6 +386,19 @@ label.right {
         font-size: 1.5rem;
         padding-top: .5rem;
     }
+    #play-again {
+        margin: 3rem auto 1rem
+    }
+    #end-text {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .footer a[href^="humans"] img {
+        margin-left: 1rem;
+    }
+    .footer ul {
+        margin-right: 1rem;
+    }
     hr {
         display: block;
     }
@@ -394,6 +429,9 @@ label.right {
     .posterframe {
         width: 50%;
     }
+    .posterframe div {
+        top: 106%;
+    }
     .answers {
         display: block;
     }
@@ -414,12 +452,21 @@ label.right {
     }
 }
 
-/**********LARGE SCREENS**************/
-@media only screen and (min-width: 40em) {
-    .social li {
-        margin-left: .75rem;
+/**********DESKTOP SCREENS**************/
+@media only screen and (min-width: 56.25em) and (max-width: 90em) {
+    .gamewrapper {
+        width: 80%;
     }
-
+    .gamewrapper section p {
+        font-size: 2rem;
+    }
+    .posterframe {
+        max-width: 321px;
+        margin: 1.5rem 4rem 4.5rem 11rem;
+    }
+    .answers {
+        margin: 4rem 0 0 0;
+    }
 }
 
 

@@ -27,14 +27,12 @@ $(document).ready(function() {
 
 ////////////////VARIABLES/////////////////
     var $next = $("#next-button");
-    var $playAgain = $("#play-again");
     var randomImage;
     var $img = $("#posterImg");
     var $gameWrapper = $(".gamewrapper");
 
     //Keep Score starting with zero.
     var score = 0;
-    // score= 0;
 
     //Empty and Used Arrays
     var unusedImages = [posterOne, posterTwo, posterThree, posterFour, posterFive, posterSix, posterSeven, posterEight, posterNine, posterTen];
@@ -73,8 +71,8 @@ $(document).ready(function() {
 
     function nextImage() {
         $next.velocity("fadeOut", { duration: 250 });
-        $playAgain.hide();
         $(".answers p > span").removeClass();
+        $('.answers-mobile').prop('selectedIndex',0);
 
         //Find Random Image Src from unusedImages Array
         (function() {
@@ -92,10 +90,57 @@ $(document).ready(function() {
         }
         //End of game.
         else if (usedImages.length == 10) {
+            var $ending = $("#endinfo");
+            var $playAgain = $("#play-again");
+            var endVarSentence;
+            // var $endText = $("#end-text");
+            var $endInfo = '<p id="end-text"></p>';
+            $endInfo += '<div class="score"><p class="add" id="add">Score: <span>0</span>/10</p></div>';
+            $endInfo += '<div id="play-again"><a href="#">Play Again?</a></div>';
+            $ending.html($endInfo);
+            switch(score) {
+                case 0:
+                    endVarSentence = "What you just scored is one of the most insanely idiotic things I have ever seen. Everyone in this room is now dumber for having seen to it. May God have mercy on your soul.";
+                    break;
+                case 1:
+                    endVarSentence = "1 point? I fart in your general direction! Your mother was a hamster and your father smelt of elderberries!";
+                    break;
+                case 2:
+                    endVarSentence = "Good score? We don't need no stinkin' good scores!";
+                    break;
+                case 3:
+                    endVarSentence = "Say hello to my little score!";
+                    break;
+                case 4:
+                    endVarSentence = "Scores is a box of chocolates. You never know what you're gonna get.";
+                    break;
+                case 5:
+                    endVarSentence = "Just when I think you couldn't possibly be any dumber, you go and score somethin' like this -- and totally redeem yourself! Ha Ha!";
+                    break;
+                case 6:
+                    endVarSentence = "This one time at band camp I scored a 6 out of 10";
+                    break;
+                case 7:
+                    endVarSentence = "I achieved this score with some fava beans and a nice chianti.";
+                    break;
+                case 8:
+                    endVarSentence = "In case I don't see ya, good afternoon, good evening, and good score!";
+                    break;
+                case 9:
+                    endVarSentence = "Do, or do not. There is no try";
+                    break;
+                default:
+                    endVarSentence = "If scoring perfect is cool, consider me Miles Davis!";
+            }
+            // $endText.text(endVarSentence);
             $gameWrapper.velocity("fadeOut", { duration: 500 });
-            $next.velocity("fadeOut", { duration: 500 });
-            $playAgain.velocity("fadeIn", { duration: 500 });
-            // for (var i=0; i<4; i++) { $(".answers p")[i].childNodes[1].nodeValue = ""; }
+            $ending.velocity("fadeIn", { duration: 500 });
+            $playAgain.on('click', function() {
+                window.location.reload();
+            });
+            $('#add span').text(score);
+            var $endText = $("#end-text");
+            $endText.text(endVarSentence);
         }
         //Image has been used, so find another random image
         else {
@@ -135,9 +180,9 @@ $(document).ready(function() {
     //Go to Next Image
     $next.on('click', nextImage);
     //Restart Game
-    $playAgain.on('click', function() {
-        window.location.reload();
-    });
+    // $playAgain.on('click', function() {
+    //     window.location.reload();
+    // });
 
 });
 
