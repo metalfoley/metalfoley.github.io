@@ -11,7 +11,6 @@
  body {
     width: 100%;
  }
-
 .container {
     background: url('../img/bgtexture.png');
     background-color: #ffdc71;
@@ -95,8 +94,15 @@ p {
     font-size: 24px;
     color: #ffdc71;
 }
-
-.social {
+#bottom {
+    padding: 1.25rem 0;
+    margin-right: 2.5rem;
+    font-family: 'liberationBold'
+}
+#bottom p {
+    color: #ffdc71;
+}
+/*.social {
     position: relative;
     margin: 0 31px 0 0;
 }
@@ -132,21 +138,29 @@ p {
 
 #github:hover {
     background: url('../img/logo-sprites.svg') -90px 0;
-}
-
+}*/
 /*************************************
             POSTER GAME
 *************************************/
 
 .gamewrapper {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .posterframe {
     width: 42%;
     float: left;
-    margin: 2.75rem 4rem 7rem 2.75rem;
+    margin: 0 4rem 0 8%;
     position: relative;
     z-index: 99;
 }
@@ -199,7 +213,12 @@ p {
 }
 
 .answers{
-    margin: 6.875rem 0 0 0;
+    margin: 5rem 0 3rem 0;
+}
+
+a#viewTrailer {
+    color: #f1f2ca;
+    background-color: #0E0740;
 }
 
 .gamewrapper section {
@@ -247,15 +266,18 @@ p {
     word-wrap: break-word;
     text-align: center;
     margin-bottom: 1rem;
+}
+#end-score {
     margin-top: 2rem;
 }
-
 .score p{
     font-size:  2rem;
     padding: 0;
     margin: -1.5rem 0;
 }
-
+.score#top {
+    display: none;
+}
 hr {
     display: none;
     border: solid #7a0005;
@@ -267,11 +289,11 @@ hr {
 }
 #endinfo {
     width: 100%;
-    max-width: 1200px;
+    max-width: 75rem;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
 }
 #end-text {
     text-align: center;
@@ -347,10 +369,19 @@ label.right {
     .posterframe,  .gamewrapper section {
         float: none;
         margin-left: 0;
-        margin-bottom: 3.375rem;
+        margin-bottom: 25%;
     }
     .top-bar .name {
         margin-left: 0;
+    }
+    .gamewrapper {
+        position: static;
+        margin: 0 auto;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
     }
     .posterframe {
         width: 75%;
@@ -358,7 +389,7 @@ label.right {
         text-align: center;
     }
     .posterframe div {
-        top: 114.85%;
+        top: 118%;
     }
     #next-button, #next-button:hover, #play-again a, #play-again a:hover {
         border: .35rem solid #7a0005;
@@ -370,6 +401,9 @@ label.right {
         font-family: 'liberation', serif;
         padding-left: 0;
         text-align: center;
+    }
+    .gamewrapper {
+        width: 80%;
     }
     .answers {
         display: none;
@@ -385,6 +419,12 @@ label.right {
     .score p {
         font-size: 1.5rem;
         padding-top: .5rem;
+    }
+    .score#bottom {
+        display: none;
+    }
+    .score#top {
+        display: block;
     }
     #play-again {
         margin: 3rem auto 1rem
@@ -416,24 +456,32 @@ label.right {
     textarea {
         margin: 0 0 1rem 2rem;
     }
-    input[type="text"] {
+    input[type="text"]:not(#userName) {
         margin: 0 0 1rem .75rem;
         width: 175%;
     }
     .row {
         margin-left: -1rem;
     }
+    #video-model-btn{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 }
 
 @media only screen and (min-width: 40em) and (max-width: 56.25em) {
+    .posterframe,  .gamewrapper section {
+        margin-bottom: 4rem;
+    }
     .posterframe {
         width: 50%;
     }
     .posterframe div {
-        top: 106%;
+        top: 103.5%;
     }
     .answers {
         display: block;
+        margin: 4.5rem 0 0 0;
     }
     .gamewrapper section p {
         font-size: 2rem;
@@ -450,22 +498,25 @@ label.right {
     .answers-mobile{
         display: none;
     }
+    a#viewTrailer {
+        display: block;
+    }
+    #video-model-btn{
+        margin: -1rem 0 2rem 0;
+    }
 }
 
 /**********DESKTOP SCREENS**************/
 @media only screen and (min-width: 56.25em) and (max-width: 90em) {
-    .gamewrapper {
-        width: 80%;
-    }
     .gamewrapper section p {
         font-size: 2rem;
     }
     .posterframe {
         max-width: 321px;
-        margin: 1.5rem 4rem 4.5rem 11rem;
+        margin: 0 4rem 0 20%;
     }
     .answers {
-        margin: 4rem 0 0 0;
+        margin: 3rem 0 3rem 0;
     }
 }
 

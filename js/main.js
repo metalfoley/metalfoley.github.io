@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     //POSTERS//
 
-    function Poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, answers) {
+    function Poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, trailer, answers) {
         this.censored = censored;
         this.uncensored = uncensored;
         this.answerOne = answerOne;
@@ -11,18 +11,19 @@ $(document).ready(function() {
         this.answerThree = answerThree;
         this.correctAnswer = correctAnswer;
         this.answers = [answerOne, answerTwo, answerThree, correctAnswer];
+        this.trailer = trailer;
         this.randomAnswers = shuffle(this.answers);
     }
-    var posterOne = new Poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Gone");
-    var posterTwo = new Poster("oculus_c", "oculus_u","Sinister", "Insidious", "The Conjuring", "Oculus");
-    var posterThree = new Poster("drive_c", "drive_u", "Rush", "Bronson", "Blue Valentine", "Drive");
-    var posterFour = new Poster("zodiac_c","zodiac_u", "The Game", "Panic Room", "Source Code", "Zodiac");
-    var posterFive = new Poster("silverliningsplaybook_c","silverliningsplaybook_u", "Friends With Benefits", "Crazy Stupid Love", "American Hustle", "Silver Linings Playbook");
-    var posterSix = new Poster("darkknight_c","darkknight_u", "Inception", "The Prestige", "Batman Begins", "The Dark Knight");
-    var posterSeven = new Poster("fightclub_c","fightclub_u", "Pulp Fiction", "Seven", "Snatch", "Fight Club");
-    var posterEight = new Poster("elephantman_c","elephantman_u", "Eraserhead", "The Deer Hunter", "Blue Velvet", "The Elephant Man");
-    var posterNine = new Poster("dune_c","dune_u", "Stargate", "The Fifth Element", "Contact", "Dune");
-    var posterTen = new Poster("yougotmail_c","yougotmail_u", "Sleepless in Seattle", "Pretty Woman", "Runaway Bride", "You've Got Mail");
+    var posterOne = new Poster("gonebabygone_c", "gonebabygone_u", "Mystic River", "Eastern Promises", "The Town", "Gone Baby Gone", "vAhPH8Qa_os");
+    var posterTwo = new Poster("oculus_c", "oculus_u","Sinister", "Insidious", "The Conjuring", "Oculus", "dYJrxezWLUk");
+    var posterThree = new Poster("drive_c", "drive_u", "Rush", "Bronson", "Blue Valentine", "Drive", "Pe6eOqheva8");
+    var posterFour = new Poster("zodiac_c","zodiac_u", "The Game", "Panic Room", "Source Code", "Zodiac", "bEvnwKFUnI0");
+    var posterFive = new Poster("silverliningsplaybook_c","silverliningsplaybook_u", "Friends With Benefits", "Crazy Stupid Love", "American Hustle", "Silver Linings Playbook", "2MP7A1k8Jr0");
+    var posterSix = new Poster("darkknight_c","darkknight_u", "Inception", "The Prestige", "Batman Begins", "The Dark Knight", "yQ5U8suTUw0");
+    var posterSeven = new Poster("fightclub_c","fightclub_u", "Pulp Fiction", "Seven", "Snatch", "Fight Club", "SUXWAEX2jlg");
+    var posterEight = new Poster("elephantman_c","elephantman_u", "Eraserhead", "The Deer Hunter", "Blue Velvet", "The Elephant Man", "ye4YTZOq2fk");
+    var posterNine = new Poster("dune_c","dune_u", "Stargate", "The Fifth Element", "Contact", "Dune", "hzUlXEyvJeA");
+    var posterTen = new Poster("yougotmail_c","yougotmail_u", "Sleepless in Seattle", "Pretty Woman", "Runaway Bride", "You've Got Mail", "jCetfaS7GAo");
 
 
 ////////////////VARIABLES/////////////////
@@ -30,6 +31,8 @@ $(document).ready(function() {
     var randomImage;
     var $img = $("#posterImg");
     var $gameWrapper = $(".gamewrapper");
+    var $viewTrailer = $("#viewTrailer");
+    var $answers = $(".answers");
 
     //Keep Score starting with zero.
     var score = 0;
@@ -39,6 +42,7 @@ $(document).ready(function() {
     var usedImages = [];
 
     $next.hide();
+    $viewTrailer.hide();
 
     function createAnswers() {
         var i, $update, $options, answerText;
@@ -71,6 +75,7 @@ $(document).ready(function() {
 
     function nextImage() {
         $next.velocity("fadeOut", { duration: 250 });
+        $viewTrailer.velocity("fadeOut", { duration: 250 });
         $(".answers p > span").removeClass();
         $('.answers-mobile').prop('selectedIndex',0);
 
@@ -84,18 +89,20 @@ $(document).ready(function() {
         //See if current image has already been used
         //Image has not been used, so make current image the new src and push it into the usedImages array
         if (usedImages.indexOf(randomImage) == -1) {
+            var $videoTrailer = $(".flex-video");
+            $videoTrailer.html("<iframe width='560' height='315'  src='//www.youtube.com/embed/" + randomImage.trailer + "' frameborder='0' allowfullscreen></iframe>");
+
             $img.attr("src", "img/" + randomImage.censored + ".png").attr("alt", randomImage.correctAnswer);
+
             createAnswers();
             usedImages.push(randomImage);
         }
         //End of game.
         else if (usedImages.length == 10) {
             var $ending = $("#endinfo");
-            var $playAgain = $("#play-again");
             var endVarSentence;
-            // var $endText = $("#end-text");
             var $endInfo = '<p id="end-text"></p>';
-            $endInfo += '<div class="score"><p class="add" id="add">Score: <span>0</span>/10</p></div>';
+            $endInfo += '<div class="score" id="end-score"><p class="add" id="add">Score: <span>0</span>/10</p></div>';
             $endInfo += '<div id="play-again"><a href="#">Play Again?</a></div>';
             $ending.html($endInfo);
             switch(score) {
@@ -132,10 +139,10 @@ $(document).ready(function() {
                 default:
                     endVarSentence = "If scoring perfect is cool, consider me Miles Davis!";
             }
-            // $endText.text(endVarSentence);
             $gameWrapper.velocity("fadeOut", { duration: 500 });
             $ending.velocity("fadeIn", { duration: 500 });
-            $playAgain.on('click', function() {
+            var $playAgain = $("#play-again");
+            $ending.on('click', $playAgain, function() {
                 window.location.reload();
             });
             $('#add span').text(score);
@@ -162,8 +169,9 @@ $(document).ready(function() {
         else {
             $answerColor.addClass("wrong");
         }
-        $next.velocity("fadeIn", { duration: 250 });
         $img.attr("src", "img/" + randomImage.uncensored + ".png").attr("alt", randomImage.correctAnswer);
+        $next.velocity("fadeIn", { duration: 250 });
+        $viewTrailer.velocity("fadeIn", { duration: 250 });
         return score;
     }
 
@@ -179,10 +187,6 @@ $(document).ready(function() {
     $(".container").on('change', '.answers-mobile', checkIfCorrect);
     //Go to Next Image
     $next.on('click', nextImage);
-    //Restart Game
-    // $playAgain.on('click', function() {
-    //     window.location.reload();
-    // });
 
 });
 

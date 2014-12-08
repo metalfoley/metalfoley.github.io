@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>Whose Poster?</title>
-        <meta name="description" content="">
+        <meta name="description" content="A movie Buff's paradise. Can you match the movie to the poster?">
         <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
         <link rel="author" href="humans.txt" />
         <link rel="stylesheet" href="css/normalize.min.css">
@@ -25,32 +26,21 @@
                         <li class="name">
                             <h1><a href="#">Whose Poster?</a></h1>
                         </li>
-                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
                     </ul>
-                    <section class="top-bar-section clearfix">
-                        <!-- Social Media Section -->
-                        <ul class="right social">
-                          <li><a href="www.linkedin.com/in/stevenbyington/" class="show-for-medium-up" id="linkedin"></a></li>
-                          <li><a href="www.linkedin.com/in/stevenbyington/" class="hide-for-medium-up"><span>LinkedIn</span></a></li>
-                          <li><a href="https://twitter.com/srbyington"  class="show-for-medium-up" id="twitter"><span class="hide-for-medium-up">Twitter</span></a></li>
-                          <li><a href="https://twitter.com/srbyington" class="hide-for-medium-up"><span>Twitter</span></a></li>
-                          <li><a href="https://github.com/metalfoley"  class="show-for-medium-up" id="github"><span class="hide-for-medium-up">Github</span></a></li>
-                          <li><a href="https://github.com/metalfoley" class="hide-for-medium-up"><span>Github</span></a></li>
-                        </ul>
-                    </section>
+                    <div class="score right" id="bottom">
+                        <p class="add">Score: <span>0</span>/10</p>
+                    </div>
                 </nav>
                 <!-- END NAVIGATION -->
 
-                <!-- END GAME AREA -->
-
-<div id="endinfo">
+                <div id="endinfo">
 
                 </div>
 
 
                 <!-- GAME AREA -->
                 <div class="gamewrapper clearfix">
-                    <div class="score">
+                    <div class="score" id="top">
                         <p class="add">Score: <span>0</span>/10</p>
                     </div>
                     <div class="posterframe">
@@ -84,8 +74,13 @@
 
                     </section>
 
-                </div>
+                    <div id="video-model-btn">
+                        <a href="#" id="viewTrailer" data-reveal-id="videoModal" class="radius button">View Trailer</a>
+                    </div>
 
+
+                </div>
+                <!-- END GAME AREA -->
 
                 <!-- FEEDBACK MODEL -->
                 <div id="feedback-model" class="reveal-modal" data-reveal>
@@ -132,6 +127,14 @@
 
                 </div>
             <!-- END FEEDBACK MODEL -->
+
+                <div id="videoModal" class="reveal-modal large" data-reveal>
+                  <div class="flex-video" style="display: block;">
+
+                  </div>
+
+                  <a class="close-reveal-modal">&#215;</a>
+                </div>
             <div class="push"></div>
         </div>
 
