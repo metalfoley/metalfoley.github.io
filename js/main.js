@@ -1,6 +1,28 @@
 $(document).ready(function() {
 "use strict";
 
+////////////////VARIABLES/////////////////
+    var $next, randomImage, $img, $gameWrapper, $viewTrailer, $answers, score;
+
+    $next = $("#next-button");
+    randomImage;
+    $img = $("#posterImg");
+    $gameWrapper = $(".gamewrapper");
+    $viewTrailer = $("#viewTrailer");
+    $answers = $(".answers");
+
+    //Keep Score starting with zero.
+    score = 0;
+
+    //Add mobile options if on mobile device
+    if($(".answers-mobile").css("display") == "block") {
+        var addOptions = '<option></option>'
+        for (var i = 0; i<3; i++) {
+            addOptions += '<option></option>';
+        }
+        $('.answers-mobile').append(addOptions);
+    }
+
     //POSTERS//
 
     function Poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, trailer, answers) {
@@ -25,24 +47,11 @@ $(document).ready(function() {
     var posterNine = new Poster("dune_c","dune_u", "Stargate", "The Fifth Element", "Contact", "Dune", "hzUlXEyvJeA");
     var posterTen = new Poster("yougotmail_c","yougotmail_u", "Sleepless in Seattle", "Pretty Woman", "Runaway Bride", "You've Got Mail", "jCetfaS7GAo");
 
-
-////////////////VARIABLES/////////////////
-    var $next = $("#next-button");
-    var randomImage;
-    var $img = $("#posterImg");
-    var $gameWrapper = $(".gamewrapper");
-    var $viewTrailer = $("#viewTrailer");
-    var $answers = $(".answers");
-
-    //Keep Score starting with zero.
-    var score = 0;
-
     //Empty and Used Arrays
     var unusedImages = [posterOne, posterTwo, posterThree, posterFour, posterFive, posterSix, posterSeven, posterEight, posterNine, posterTen];
-    var usedImages = [];
+    unusedImages = shuffle(unusedImages);
 
-    $next.hide();
-    $viewTrailer.hide();
+
 
     function createAnswers() {
         var i, $update, $options, answerText;
@@ -52,16 +61,7 @@ $(document).ready(function() {
             answerText = document.createTextNode(randomImage.randomAnswers[i]);
 
             //Set initial answers
-            if (usedImages.length === 0) {
-                if($(".answers-mobile").css("display") != "block") {
-                    $update.appendChild(answerText);
-                }
-                else {
-                    $options.appendChild(answerText);
-                }
-            }
-            //Update answers
-            else {
+            if (unusedImages.length !== 9) {
                 if($(".answers-mobile").css("display") != "block") {
                     $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
                 }
@@ -69,36 +69,39 @@ $(document).ready(function() {
                     $options.childNodes[0].nodeValue = randomImage.randomAnswers[i];
                 }
             }
+            //Update answers
+            else {
+                if($(".answers-mobile").css("display") != "block") {
+                    $update.appendChild(answerText);
+                }
+                else {
+                    $options.appendChild(answerText);
+                }
+            }
         }
     }
 
 
     function nextImage() {
+        var $videoTrailer = $(".flex-video");
         $next.velocity("fadeOut", { duration: 250 });
         $viewTrailer.velocity("fadeOut", { duration: 250 });
         $(".answers p > span").removeClass();
         $('.answers-mobile').prop('selectedIndex',0);
 
         //Find Random Image Src from unusedImages Array
-        (function() {
-            var pullRandom = Math.floor(Math.random() * unusedImages.length);
-            randomImage = unusedImages[pullRandom];
-            return randomImage;
-        }());
+        randomImage = unusedImages.shift();
+
 
         //See if current image has already been used
         //Image has not been used, so make current image the new src and push it into the usedImages array
-        if (usedImages.indexOf(randomImage) == -1) {
-            var $videoTrailer = $(".flex-video");
             $videoTrailer.html("<iframe width='560' height='315'  src='//www.youtube.com/embed/" + randomImage.trailer + "' frameborder='0' allowfullscreen></iframe>");
 
             $img.attr("src", "img/" + randomImage.censored + ".png").attr("alt", randomImage.correctAnswer);
 
             createAnswers();
-            usedImages.push(randomImage);
-        }
         //End of game.
-        else if (usedImages.length == 10) {
+        if (unusedImages.length === 0) {
             var $ending = $("#endinfo");
             var endVarSentence;
             var $endInfo = '<p id="end-text"></p>';
@@ -138,6 +141,7 @@ $(document).ready(function() {
                     break;
                 default:
                     endVarSentence = "If scoring perfect is cool, consider me Miles Davis!";
+                    break;
             }
             $gameWrapper.velocity("fadeOut", { duration: 500 });
             $ending.velocity("fadeIn", { duration: 500 });
@@ -148,10 +152,6 @@ $(document).ready(function() {
             $('#add span').text(score);
             var $endText = $("#end-text");
             $endText.text(endVarSentence);
-        }
-        //Image has been used, so find another random image
-        else {
-            nextImage();
         }
     }
     nextImage();

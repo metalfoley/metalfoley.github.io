@@ -2,7 +2,7 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>Whose Poster?</title>
         <meta name="description" content="A movie Buff's paradise. Can you match the movie to the poster?">
@@ -15,9 +15,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+
         <div class="container">
 
                 <!-- NAVIGATION -->
@@ -45,7 +43,7 @@
                     </div>
                     <div class="posterframe">
                         <img src="img/posterframe.svg" alt="poster frame" />
-                        <img id="posterImg" src="img/coming_soon.png" />
+                        <img id="posterImg" src="img/coming_soon.png" alt="Coming Soon"/>
                         <div>
                             <a id="next-button" href="#">NEXT</a>
                         </div>
@@ -66,10 +64,6 @@
 
                         <select class="answers-mobile">
                             <option value="Please Select Your Answer" selected="selected" disabled="disabled">Please Select Your Answer</option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
                         </select>
 
                     </section>
@@ -101,10 +95,10 @@
                             <div class="small-8 columns">
                                 <div class="row">
                                     <div class="small-3 columns">
-                                        <label for="right-label" class="right inline">Email: </label>
+                                        <label for="email-label" class="right inline">Email: </label>
                                     </div>
                                     <div class="small-9 columns">
-                                        <input type="text" id="right-label" placeholder="What is your Email?">
+                                        <input type="text" id="email-label" placeholder="What is your Email?">
                                     </div>
                                 </div>
                             </div>
@@ -143,13 +137,14 @@
                 <ul class="right">
                     <li><a href="#" data-reveal-id="feedback-model">GOT FEEDBACK?</a></li>
                </ul>
-                <a href="humans.txt" target="_new"><img src="img/humanstxt.png" /></a>
+                <a href="humans.txt" target="_blank"><img src="img/humanstxt.png" alt="humans.txt file"/></a>
             </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
         <script src="//cdn.jsdelivr.net/velocity/1.1.0/velocity.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/velocity.min.js"><\/script>')</script>
+        <script src="js/vendor/foundation.min.js"></script>
         <script src="js/main.min.js"></script>
         <script>$(document).foundation();</script>
 

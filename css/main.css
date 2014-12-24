@@ -219,6 +219,7 @@ p {
 a#viewTrailer {
     color: #f1f2ca;
     background-color: #0E0740;
+    display: none;
 }
 
 .gamewrapper section {
@@ -257,7 +258,7 @@ a#viewTrailer {
     background-color: #7a0005;
 }
 .gamewrapper section .score p:hover {
-    background-color: none;
+    background-color: transparent;
 }
 
 .score {
@@ -338,6 +339,13 @@ hr {
     border: 1rem solid #7a0005;
     background-color: #fef3d2;
 }
+#videoModal {
+    top: 50% !important;
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 
 /*************************************
               FORM
@@ -396,6 +404,7 @@ label.right {
     }
     #next-button, #play-again a {
         font-size: 1.5rem;
+        display: none;
     }
     .top-bar-section ul li>a {
         font-family: 'liberation', serif;
