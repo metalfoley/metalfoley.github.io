@@ -1,11 +1,14 @@
 $(document).ready(function() {
-"use strict";
+    "use strict";
 
-////////////////VARIABLES/////////////////
-    var $next, randomImage, $img, $gameWrapper, $viewTrailer, $answers, score;
+    /******************************************************************
+    //////////////////      GLOBAL  VARIABLES      ////////////////////
+    ******************************************************************/
+
+    var $next, randomImage, $img, $gameWrapper, $viewTrailer, $answers, score, counter;
 
     $next = $("#next-button");
-    randomImage;
+    counter = 0;
     $img = $("#posterImg");
     $gameWrapper = $(".gamewrapper");
     $viewTrailer = $("#viewTrailer");
@@ -15,15 +18,18 @@ $(document).ready(function() {
     score = 0;
 
     //Add mobile options if on mobile device
-    if($(".answers-mobile").css("display") == "block") {
-        var addOptions = '<option></option>'
-        for (var i = 0; i<3; i++) {
+    if ($(".answers-mobile").css("display") === "block") {
+        var i, addOptions;
+        addOptions = '<option></option>';
+        for (i = 0; i<3; i++) {
             addOptions += '<option></option>';
         }
         $('.answers-mobile').append(addOptions);
     }
 
-    //POSTERS//
+    /******************************************************************
+    //////////////////           POSTERS           ////////////////////
+    ******************************************************************/
 
     function Poster(censored, uncensored, answerOne, answerTwo, answerThree, correctAnswer, trailer, answers) {
         this.censored = censored;
@@ -47,22 +53,29 @@ $(document).ready(function() {
     var posterNine = new Poster("dune_c","dune_u", "Stargate", "The Fifth Element", "Contact", "Dune", "hzUlXEyvJeA");
     var posterTen = new Poster("yougotmail_c","yougotmail_u", "Sleepless in Seattle", "Pretty Woman", "Runaway Bride", "You've Got Mail", "jCetfaS7GAo");
 
-    //Empty and Used Arrays
+    /******************************************************************
+    //////////////////    EMPTY AND USED ARRAYS    ////////////////////
+    ******************************************************************/
+
     var unusedImages = [posterOne, posterTwo, posterThree, posterFour, posterFive, posterSix, posterSeven, posterEight, posterNine, posterTen];
     unusedImages = shuffle(unusedImages);
 
-
+    /******************************************************************
+    //////////////////     CREATE GAME ANSWERS     ////////////////////
+    ******************************************************************/
 
     function createAnswers() {
         var i, $update, $options, answerText;
         for (i = 0; i < 4; i++) {
+            //Desktop and Tablet Answers
             $update = $(".answers p")[i];
+            //Mobile Answers
             $options = $(".answers-mobile option")[i+1];
             answerText = document.createTextNode(randomImage.randomAnswers[i]);
 
             //Set initial answers
             if (unusedImages.length !== 9) {
-                if($(".answers-mobile").css("display") != "block") {
+                if ($(".answers-mobile").css("display") != "block") {
                     $update.childNodes[1].nodeValue = randomImage.randomAnswers[i];
                 }
                 else {
@@ -71,7 +84,7 @@ $(document).ready(function() {
             }
             //Update answers
             else {
-                if($(".answers-mobile").css("display") != "block") {
+                if ($(".answers-mobile").css("display") != "block") {
                     $update.appendChild(answerText);
                 }
                 else {
@@ -82,6 +95,10 @@ $(document).ready(function() {
     }
 
 
+    /******************************************************************
+    //////////////////     CREATE NEXT POSTER      ////////////////////
+    ******************************************************************/
+
     function nextImage() {
         var $videoTrailer = $(".flex-video");
         $next.velocity("fadeOut", { duration: 250 });
@@ -89,21 +106,11 @@ $(document).ready(function() {
         $(".answers p > span").removeClass();
         $('.answers-mobile').prop('selectedIndex',0);
 
-        //Find Random Image Src from unusedImages Array
-        randomImage = unusedImages.shift();
-
-
-        //See if current image has already been used
-        //Image has not been used, so make current image the new src and push it into the usedImages array
-            $videoTrailer.html("<iframe width='560' height='315'  src='//www.youtube.com/embed/" + randomImage.trailer + "' frameborder='0' allowfullscreen></iframe>");
-
-            $img.attr("src", "img/" + randomImage.censored + ".png").attr("alt", randomImage.correctAnswer);
-
-            createAnswers();
+        counter += 1;
         //End of game.
-        if (unusedImages.length === 0) {
+        if (counter === 11) {
             var $ending = $("#endinfo");
-            var endVarSentence;
+            var endVarSentence = "";
             var $endInfo = '<p id="end-text"></p>';
             $endInfo += '<div class="score" id="end-score"><p class="add" id="add">Score: <span>0</span>/10</p></div>';
             $endInfo += '<div id="play-again"><a href="#">Play Again?</a></div>';
@@ -143,8 +150,10 @@ $(document).ready(function() {
                     endVarSentence = "If scoring perfect is cool, consider me Miles Davis!";
                     break;
             }
+            //Hide game elements
             $gameWrapper.velocity("fadeOut", { duration: 500 });
             $ending.velocity("fadeIn", { duration: 500 });
+            //Show ending elements
             var $playAgain = $("#play-again");
             $ending.on('click', $playAgain, function() {
                 window.location.reload();
@@ -153,9 +162,23 @@ $(document).ready(function() {
             var $endText = $("#end-text");
             $endText.text(endVarSentence);
         }
+
+        //Find Random Image Src from unusedImages Array
+        randomImage = unusedImages.shift();
+
+        //See if current image has already been used
+        //Image has not been used, so make current image the new src and push it into the usedImages array
+            $videoTrailer.html("<iframe width='560' height='315'  src='//www.youtube.com/embed/" + randomImage.trailer + "' frameborder='0' allowfullscreen></iframe>");
+
+            $img.attr("src", "img/" + randomImage.censored + ".png").attr("alt", randomImage.correctAnswer);
+
+            createAnswers();
     }
     nextImage();
 
+    /******************************************************************
+    //////////////////   CHECK FOR CORRECT ANSWER  ////////////////////
+    ******************************************************************/
 
     function checkIfCorrect() {
         var $answerColor = $(this).children();
@@ -172,14 +195,11 @@ $(document).ready(function() {
         $img.attr("src", "img/" + randomImage.uncensored + ".png").attr("alt", randomImage.correctAnswer);
         $next.velocity("fadeIn", { duration: 250 });
         $viewTrailer.velocity("fadeIn", { duration: 250 });
-        return score;
     }
 
-
-
-    //**
-    ////////////////BUTTONS///////////////////
-    //**
+    /******************************************************************
+    //////////////////           BUTTONS           ////////////////////
+    ******************************************************************/
 
     //Check if answer is correct
     $(".answers p").on('click', checkIfCorrect);
@@ -189,5 +209,3 @@ $(document).ready(function() {
     $next.on('click', nextImage);
 
 });
-
-// $('#humansTxt').foundation('reveal', 'open', 'humans.txt');
